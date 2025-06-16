@@ -4,6 +4,7 @@ ERD E-WALLET
 erDiagram
 direction LR
     user ||--|| balance : own
+    user ||--o{ topup : do
  user ||--o{ transaction : do
     transaction ||--o{ history : have
 
@@ -27,13 +28,17 @@ direction LR
     transaction {
         int id_transaction PK
         int amount
-        string note
-        enum type_transaction "transfer,topup"
+
         enum status "pending,completed,failed"
         date date_transaction
         string method
-
         int id_user_receiver FK
+        int id_user FK
+    }
+    topup {
+        int id_topup PK
+        int amount
+        date date_transaction
         int id_user FK
     }
 
