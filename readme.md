@@ -32,7 +32,6 @@ direction LR
         enum status "pending,completed,failed"
         date date_transaction
         string method
-        int id_user_receiver FK
         int id_user FK
     }
     topup {
